@@ -1,0 +1,2 @@
+####kubernetes Join a node command
+ kubeadm token create --print-join-command
