@@ -48,4 +48,6 @@ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/custom-resources.yaml
 
 
-
+#####to verify the cluster is ready or not
+kubectl get nodes
+kubectl get pod --all-namespaces
