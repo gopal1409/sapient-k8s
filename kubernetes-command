@@ -1,2 +1,24 @@
 ####kubernetes Join a node command
  kubeadm token create --print-join-command
+ ###node has join but it is not showing ready
+ ssh gopal@k8snode
+ sudo -i
+ ##login to the node using username and password
+ systemctl stop kubelet
+ systemctl status kubelet
+ exit
+ exit
+ #####in the mastermachine 
+ kubectl get nodes
+ #####check multiple times it will show not ready
+ log back tot he second vm
+ #####
+  ssh gopal@k8snode
+ sudo -i
+ systemctl start kubelet
+ systemctl status kubelet
+ exit 
+ exit
+ ###now again do 
+ kubectl get nodes
+ 
