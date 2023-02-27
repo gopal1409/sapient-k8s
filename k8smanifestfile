@@ -10,4 +10,11 @@ how to verify where are the manifest file store
 ExecStart=/usr/local/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS
   116  systemctl restart kubelet
   117  kubectl get nodes
+####kubectl system
+ 133  find /etc/systemd/system/ | grep kube
+  134  find /etc/systemd/system/ | grep etcd
+  135  find /etc/kubernetes/manifests/
+  138  kubectl -n kube-system get pod -o wide | grep k8smaster
+  139  kubectl -n kube-system get ds
+  140  kubectl -n kube-system get deploy
 
