@@ -1,2 +1,13 @@
 how to verify where are the manifest file store
 /etc/kubernetes/
+
+###3prolem in the path of kubelet
+ 115  nano 10-kubeadm.conf
+ ###change the path to 
+ ###wright path
+ ExecStart=/usr/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS
+###make it wrong
+ExecStart=/usr/local/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS
+  116  systemctl restart kubelet
+  117  kubectl get nodes
+
