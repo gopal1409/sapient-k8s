@@ -1,0 +1,52 @@
+ 1  apt-get update
+    2  sudo apt install curl apt-transport-https -y
+    3 
+    4  sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    5  curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+    6  echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+    7  sudo apt update
+   
+   11  sudo apt-get update --allow-insecure-repositories
+   12  sudo apt -y install vim git curl wget kubelet kubeadm kubectl  --allow-insecure-repositories
+   13  sudo apt -y install vim git curl wget 
+   14  kubectl get nodes
+   16  sudo apt install kubelet kubeadm kubectl
+   17  kubectl
+   18  sudo apt-mark hold kubelet kubeadm kubectl
+   19  sudo modprobe overlay
+   20  sudo modprobe br_netfilter
+   21  sudo nano /etc/sysctl.d/kubernetes.conf
+   net.bridge.bridge-nf-call-ip6tables = 1
+   net.bridge.bridge-nf-call-iptables = 1
+   net.ipv4.ip_forward = 1
+   22  sudo sysctl --system
+   23  
+   24  sudo nano /etc/modules-load.d/containerd.conf
+   overlay
+   br_netfilter
+   25  sudo sysctl --system
+   26  sudo apt install curl gnupg2 software-properties-common apt-transport-https ca-certificates -y
+   27  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+   28  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+   29  sudo apt update
+   30  sudo apt install containerd.io -y
+   mkdir -p /etc/containerd
+
+containerd config default>/etc/containerd/config.toml
+
+sudo systemctl restart containerd
+
+sudo systemctl enable containerd
+
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16
+
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/tigera-operator.yaml
+
+
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/custom-resources.yaml
+
+
+
