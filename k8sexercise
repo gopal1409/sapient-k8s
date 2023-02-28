@@ -15,3 +15,11 @@
 127  kubectl -n project get pod
   128  kubectl -n project delete pod kucc1
   129  kubectl -n project get pod
+  ####create a deployment 
+   148  kubectl create deployment --image=nginx nginx --dry-run=client -o yaml
+  149  kubectl create deployment --image=nginx nginx --dry-run=client -o yaml > dep.yaml
+  150  kubectl apply -f dep.yaml
+  151  kubectl get deploy
+  152  kubectl scale deployment nginx --replicas=4
+  153  kubectl get deploy
+
