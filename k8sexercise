@@ -33,4 +33,20 @@
 #####press esc :wq!
 kubectl get pod --all-namespaces
 
+######exercise
+128  kubectl run nginx --image=nginx
+  129  kubectl run mysql --image=nginx
+  130  kubectl run consul --image=consul
+  131  kubectl get pod --show-labels
+  132  kubectl label pod consul name=cpu-utilzier
+  133  kubectl label pod nginx name=cpu-utilzier
+  134  kubectl label pod mysql name=cpu-utilzier
+  135  kubectl get pod --show-labels
+###use the kubectl top command to check the pod and node utilziation
+ 138  kubectl top --help
+  139  kubectl top pod --help
+  140  kubectl top pod -l name=cpu-utilzier -A
+  ####they will say that once you got the pod information write it in a file pod name
+  /var/logs/test.sh
+  ###/var/logs/test
 
