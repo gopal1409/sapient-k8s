@@ -10,4 +10,8 @@
   106  kubectl get pod
   107  k -n project get pod
   108  k -n project describe pod
-######
+######exercise 2
+#####deployment
+127  kubectl -n project get pod
+  128  kubectl -n project delete pod kucc1
+  129  kubectl -n project get pod
