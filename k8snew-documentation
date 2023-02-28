@@ -1,0 +1,9 @@
+#how to install kubernetes
+sudo -i
+7  mkdir /etc/apt/keyrings/
+ 8  sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    9  echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+ 12  apt-get update
+   13  apt list kubeadm
+   14  apt list -a kubeadm
+
