@@ -12,3 +12,21 @@
    72  kubectl get nodes
    74  kubectl uncordon k8smaster
    75  kubectl get nodes
+###how to upgrade the worker node
+81  kubectl get nodes
+   82  kubectl cordon k8snode
+   83  kubectl drain k8snode
+   84  kubectl drain k8snode --ignore-daemonsets
+   ###ssh to the node
+   85  ssh gopal@k8snode
+   sudo -i
+   ###install the update package
+   69  apt-get install kubeadm=1.25.6-00 kubectl=1.25.6-00 kubelet=1.25.6-00
+   exit
+   exit
+   ####back to kubemaster
+   #####run the below command 
+   86  kubeadm upgrade node
+   ###finally uncordon will put the node back in service
+   87  kubectl uncordon k8snode
+   88  kubectl get nodes
