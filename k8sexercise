@@ -22,4 +22,15 @@
   151  kubectl get deploy
   152  kubectl scale deployment nginx --replicas=4
   153  kubectl get deploy
+  ####from the pod label name=cpu-utilzier, find pod runnign high cpu workload and write the name of the pod consuming most cpu to a file
+  ###first we need to install the metrics server in kubernetes
+  141  kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+  142  kubectl get pod --all-namespaces
+###but if we look into the metrics server it requires tls certificat
+ 145  kubectl edit deploy metrics-server --namespace=kube-system
+###inside the container block
+- --kubelet-insecure-tls
+#####press esc :wq!
+kubectl get pod --all-namespaces
+
 
