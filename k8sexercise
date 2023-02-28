@@ -1,0 +1,13 @@
+###create a namespace
+97  k create ns project
+   98  k get ns project
+   99  k describe ns project
+#####create a pod kucc1 inside the pod we need to create 2 container nginx consul
+ 102  kubectl run kucc1 --image=nginx --dry-run=client -o yaml > aa.yaml
+  103  cat aa.yaml
+  104  nano aa.yaml
+  105  kubectl apply -f aa.yaml
+  106  kubectl get pod
+  107  k -n project get pod
+  108  k -n project describe pod
+######
