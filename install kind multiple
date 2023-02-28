@@ -1,0 +1,23 @@
+ sudo -i
+ 3  mkdir /etc/apt/keyrings/
+    4  sudo apt-get update
+    5  sudo apt-get install -y ca-certificates curl
+    6  sudo apt-get install -y apt-transport-https
+    7  sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    8  echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+    9  sudo apt-get update
+   10  sudo apt-get install -y kubectl
+   ###install kind and create multiple cluster
+  12  curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.17.0/kind-linux-amd64
+   13  chmod +x ./kind
+   14  sudo mv ./kind /usr/local/bin/kind
+   15  kind create cluster --name k8s-c1-h
+   16  apt install docker.io
+   17  kind create cluster --name k8s-c1-h
+   18  kubectl cluster-info --context kind-k8s-c1-h
+   19  kind create cluster --name k8s-c2-a
+   20  docker ps
+   21  kubectl config view
+   22  kubectl config use-context kind-k8s-c2-a
+   23  kubectl config view
+
