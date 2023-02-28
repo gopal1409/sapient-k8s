@@ -2,7 +2,7 @@
 97  k create ns project
    98  k get ns project
    99  k describe ns project
-#####create a pod kucc1 inside the pod we need to create 2 container nginx consul
+#####create a pod kucc1 inside the pod we need to create 2 container nginx consul it shoudl run in project namespace
  102  kubectl run kucc1 --image=nginx --dry-run=client -o yaml > aa.yaml
   103  cat aa.yaml
   104  nano aa.yaml
