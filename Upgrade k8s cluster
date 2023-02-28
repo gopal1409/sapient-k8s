@@ -1,0 +1,15 @@
+ 60  kubeadm version -o json
+   61  kubectl get nodes
+   62  kubectl cordon k8smaster
+   63  kubectl get nodes
+   64  kubectl drain k8smaster
+   65  kubectl drain k8smaster --ignore-daemonsets --delete-local-data
+   66  kubectl get nodes
+   67  apt list -a kubeadm
+   68  apt list -a kubeadm=1.25.6-00 kubectl=1.25.6-00 kubelet=1.25.6-00
+   69  apt-get install kubeadm=1.25.6-00 kubectl=1.25.6-00 kubelet=1.25.6-00
+   70  kubeadm version
+   71  kubeadm upgrade apply v1.25.6
+   72  kubectl get nodes
+   74  kubectl uncordon k8smaster
+   75  kubectl get nodes
