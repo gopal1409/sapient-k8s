@@ -41,3 +41,32 @@ copy it and paste it in a new file.
 ###delete the running pod
 in the new configuration file add the new uid
 re apply. 
+###how to deploy pod as manifest in k8s master withought taint or toleration
+/etc/kubernetes/manifests
+mv kube-scheduler.yaml ..
+vi pod.yaml
+###inside pod.yaml
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+
+  name: nginx
+
+spec:
+
+  containers:
+
+  - name: nginx
+
+    image: nginx:1.14.2
+
+    ports:
+
+    - containerPort: 80
+#####save the file using Esc :wq
+ 308  cd ..
+  309  mv kube-scheduler.yaml ./manifests/
+  310  systemctl restart kubelet
+ 316  kubectl get pod -o wide
