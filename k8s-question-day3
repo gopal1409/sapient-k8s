@@ -104,4 +104,9 @@ status: {}
   392  kubectl apply -f nodepod.yml
   393  kubectl get pod
   394  kubectl get pod -o wide
+###find the jsong path for node
+399  kubectl get pod nodepod -o json
+  400  kubectl get pod nodepod -o json | grep nodeName
+
+  402  kubectl get pod nodepod -o jsonpath="{.spec.nodeName}"
 
