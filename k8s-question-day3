@@ -6,4 +6,9 @@ Pod should only be schedule on control plane. do not add any new labels any node
   216  kubectl describe node k8smaster
   217  kubectl describe node k8smaster | grep Taint
   218  kubectl describe node k8smaster | grep Taint -A1
+  
+  
+  ####create the pod using dry run
+  223  kubectl run pod1 --image=httpd:2.4.41-alpine --dry-run=client -o yaml > taintpod.yml
+
 
