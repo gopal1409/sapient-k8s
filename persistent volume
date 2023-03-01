@@ -34,7 +34,7 @@ spec:
   volumeMode: Filesystem
   resources:
     requests:
-      storage: 8Gi
+      storage: 2Gi
   storageClassName: slow
   416  kubectl get pv
   417  kubectl get pvc
