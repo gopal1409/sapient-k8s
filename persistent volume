@@ -4,3 +4,20 @@ ls
 exit
 exit
 ###come back to the master vm
+###create a pv with readwriteonce and storage 10Gi
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: safari-pv
+spec:
+  capacity:
+    storage: 2Gi #2Mb
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+          path: "/mnt/data"
+#######how to apply
+408  kubectl apply -f pv.yaml
+  409  kubectl get pv
+  410  kubectl describe pv safari-pv
+
