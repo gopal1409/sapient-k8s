@@ -70,3 +70,4 @@ spec:
   309  mv kube-scheduler.yaml ./manifests/
   310  systemctl restart kubelet
  316  kubectl get pod -o wide
+######
