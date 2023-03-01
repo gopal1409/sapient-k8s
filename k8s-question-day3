@@ -71,3 +71,5 @@ spec:
   310  systemctl restart kubelet
  316  kubectl get pod -o wide
 ######
+#####there are various pod in all namespaces. write a command in find_pod.sh which list all the pod sorted by their age. (metadata.CreationTimestamp)
+write another command where we can find the pod with metadata.uid and store it in find_pod2.sh
