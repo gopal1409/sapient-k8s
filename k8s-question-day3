@@ -75,3 +75,33 @@ spec:
 write another command where we can find the pod with metadata.uid and store it in find_pod2.sh
 
 ###schedule a pod with node label as disktype=ssd
+ 386  kubectl get pod --show-labels
+  387  kubectl get node --show-labels
+  388  kubectl label nodes k8snode disktype=ssd
+  389  kubectl get node --show-labels
+  390  kubectl run nodepod --image=nginx --dry-run=client -o yaml > nodepod.yml
+  391  vi nodepod.yml
+  ####inside nodepod add nodeselector
+  root@k8smaster:/etc/kubernetes/manifests# cat nodepod.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nodepod
+  name: nodepod
+spec:
+  nodeSelector:
+          disktype: ssd
+  containers:
+  - image: nginx
+    name: nodepod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+
+  392  kubectl apply -f nodepod.yml
+  393  kubectl get pod
+  394  kubectl get pod -o wide
+
