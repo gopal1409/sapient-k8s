@@ -39,5 +39,38 @@ spec:
   416  kubectl get pv
   417  kubectl get pvc
   418  kubectl describe pvc
+#####safaripod
+root@k8smaster:~# cat safari.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: safari
+  name: safari
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: safari
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: safari
+    spec:
+      volumes:
+        - name: mypd
+          persistentVolumeClaim:
+            claimName: myclaim
+      containers:
+      - image: httpd:2.4.41-alpine
+        name: httpd
+        volumeMounts:
+        - mountPath: "/tmp/safari-data"
+          name: mypd
+        resources: {}
+status: {}
 
 
