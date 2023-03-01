@@ -1,0 +1,9 @@
+##by default any pod you deploy in k8s get deployed in nodes. 
+create a single pod with httpd:2.4.41-alpine image deploy in default namespace. the pod name should be pod1 and container name should be pod1-container. 
+Pod should only be schedule on control plane. do not add any new labels any nodes. 
+ 214  kubectl get pod -o wide
+  215  kubectl get nodes
+  216  kubectl describe node k8smaster
+  217  kubectl describe node k8smaster | grep Taint
+  218  kubectl describe node k8smaster | grep Taint -A1
+
