@@ -11,4 +11,27 @@ Pod should only be schedule on control plane. do not add any new labels any node
   ####create the pod using dry run
   223  kubectl run pod1 --image=httpd:2.4.41-alpine --dry-run=client -o yaml > taintpod.yml
 
+####taintpod.yml
+root@k8smaster:~# cat taintpod.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: pod1
+  name: pod1
+spec:
+  containers:
+  - image: httpd:2.4.41-alpine
+    name: pod1-container
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  tolerations:
+
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/control-plane
+  nodeSelector:
+          node-role.kubernetes.io/control-plane: ""
+status: {}
 
