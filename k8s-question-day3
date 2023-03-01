@@ -35,3 +35,9 @@ spec:
           node-role.kubernetes.io/control-plane: ""
 status: {}
 
+###there is already a running pod a new uid:123jiojuiashiuhiufdasghasyufd they will tell your that you dont need to modify anything from the running configurartion. 
+kubectl edit pod pod1
+copy it and paste it in a new file. 
+###delete the running pod
+in the new configuration file add the new uid
+re apply. 
