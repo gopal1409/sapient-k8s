@@ -1,0 +1,6 @@
+ssh gopal@k8snode
+mkdir /mnt/data
+ls
+exit
+exit
+###come back to the master vm
