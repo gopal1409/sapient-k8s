@@ -20,4 +20,24 @@ spec:
 408  kubectl apply -f pv.yaml
   409  kubectl get pv
   410  kubectl describe pv safari-pv
+  
+  #we will create pvc so that a pod can be intialized
+   414  vi pvc.yaml
+  415  kubectl apply -f pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: myclaim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: slow
+  416  kubectl get pv
+  417  kubectl get pvc
+  418  kubectl describe pvc
+
 
