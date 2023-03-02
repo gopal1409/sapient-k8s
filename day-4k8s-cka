@@ -42,3 +42,11 @@ change the host path to the backup path
  hostPath:
       path: /var/lib/etcd-from-backup
       type: DirectoryOrCreate
+###how to create a service for an existing deploymen
+ 605  kubectl create deployment frontend --image=nginx --port=80  --dry-run=client -o yaml > frontend.yml
+  606  kubectl apply -f frontend.yml
+  607  kubectl get deploy
+  ###create svc
+  609  kubectl expose deployment frontend --name=frontend-svc --port=80 --target-port=80 --type=NodePort
+  610  kubectl get svc
+
