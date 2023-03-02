@@ -24,3 +24,15 @@
 ETCDCTL_API=3 etcdctl snapshot save /tmp/etcd-backup.db --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key /etc/kubernetes/pki/etcd/server.key
 kubectl run test --image=nginx
 kubectl get pod
+###from the worker node if you want to take the backup
+ETCDCTL_API=3 etcdctl --endpoints http://IP 
+######to restore. stop your master component
+525  cd /etc/kubernetes/manifests/
+537  mv * ..
+  538  cd ..
+  539  ls
+  540  cd manifests/
+  541  ETCDCTL_API=3 etcdctl snapshot restore /tmp/etcd-backup.db --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key /etc/kubernetes/pki/etcd/server.key
+  542  mv ../*.yaml .
+  543  ls
+  544  kubectl get pod
