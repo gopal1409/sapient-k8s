@@ -32,7 +32,8 @@ ETCDCTL_API=3 etcdctl --endpoints http://IP
   538  cd ..
   539  ls
   540  cd manifests/
-  541  ETCDCTL_API=3 etcdctl snapshot restore /tmp/etcd-backup.db --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key /etc/kubernetes/pki/etcd/server.key
+  541   ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key /etc/kubernetes/pki/etcd/server.key --data-dir /var/lib/etcd-from-backup snapshot restore /tmp/etcd-backup.db
+
   542  mv ../*.yaml .
   543  ls
   544  kubectl get pod
