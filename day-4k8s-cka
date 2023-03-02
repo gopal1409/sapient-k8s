@@ -14,3 +14,9 @@
   493  kubectl -n project-hamster auth can-i create pod --as system:serviceaccount:project-hamster:processor
   494  kubectl -n project-hamster auth can-i delete secret --as system:serviceaccount:project-hamster:processor
   495  kubectl -n project-hamster auth can-i get configmap --as system:serviceaccount:project-hamster:processor
+###how to take the backup of etcd 
+ 524  ETCDCTL_API=3 etcdctl snapshot save /tmp/etcd-backup.db
+  525  cd /etc/kubernetes/manifests/
+  526  ls
+  527  cat etcd.yaml
+  528  cat /etc/kubernetes/manifests/kube-apiserver.yaml | grep etcd
