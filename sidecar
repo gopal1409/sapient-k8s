@@ -1,0 +1,35 @@
+##create a pod big-corp-app
+apiVersion: v1
+kind: Pod
+metadata:
+  name: big-corp-app
+spec:
+  containers:
+  - name: big-corp-app
+    image: busybox:1.28
+    args:
+    - /bin/sh
+    - -c
+    - >
+      i=0;
+      while true;
+      do
+        
+        echo "$(date) INFO $i" >> /var/log/big-corp-app.log;
+        i=$((i+1));
+        sleep 1;
+      done      
+    volumeMounts:
+    - name: varlog
+      mountPath: /var/log
+  volumes:
+  - name: varlog
+    emptyDir: {}
+    
+    ####apply the file
+    ###then check it is generating the log or not
+    kubectl exec -it big-corp-app sh
+    cd /var/log
+    cat big-corp-app.log
+    exit
+    exit
