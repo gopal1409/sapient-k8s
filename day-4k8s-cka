@@ -1,0 +1,16 @@
+ 477  kubectl create ns project-hamster
+  480  kubectl -n project-hamster
+   482  kubectl -n project-hamster create sa processor
+  483  kubectl -n project-hamster get sa processor
+  484  clear
+  485  kubectl -n project-hamster create role -h
+  486  kubectl -n project-hamster create role processor --verbs=create --resource=secret,configmap
+  487  kubectl -n project-hamster create role processor --verb=create --resource=secret,configmap
+  488  kubectl -n project-hamster create rolebinding processor --help
+  489  kubectl -n project-hamster create rolebinding processor --role=processor  --serviceaccount=project-hamster:processor
+  490  kubectl -n project-hamester auth can -i create secret --as system:serviceaccount:project-hamster:processor
+  491  kubectl -n project-hamester auth can-i create secret --as system:serviceaccount:project-hamster:processor
+  492  kubectl -n project-hamster auth can-i create secret --as system:serviceaccount:project-hamster:processor
+  493  kubectl -n project-hamster auth can-i create pod --as system:serviceaccount:project-hamster:processor
+  494  kubectl -n project-hamster auth can-i delete secret --as system:serviceaccount:project-hamster:processor
+  495  kubectl -n project-hamster auth can-i get configmap --as system:serviceaccount:project-hamster:processor
