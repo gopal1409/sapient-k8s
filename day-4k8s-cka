@@ -37,3 +37,8 @@ ETCDCTL_API=3 etcdctl --endpoints http://IP
   542  mv ../*.yaml .
   543  ls
   544  kubectl get pod
+###once you restore the backup. open etcd.yml file
+change the host path to the backup path
+ hostPath:
+      path: /var/lib/etcd-from-backup
+      type: DirectoryOrCreate
