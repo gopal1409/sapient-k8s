@@ -39,7 +39,7 @@ spec:
         - podSelector:
 
                 matchLabels:
-                        role: backend
+                        run: backend
 
 
 
@@ -76,7 +76,7 @@ spec:
         - podSelector:
 
                 matchLabels:
-                        role: frontend
+                        run: frontend
 
 
 ###verify the same
