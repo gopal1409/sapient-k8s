@@ -7,3 +7,54 @@ deploy ingress
   644  kubectl run pod2 --image=httpd
   645  kubectl expose pod pod1 --port 80 --name service1
   646  kubectl expose pod pod2 --port 80 --name service2
+  ###delete the webhook
+   665  kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
+   ###create ingress.yml
+   apiVersion: networking.k8s.io/v1
+
+kind: Ingress
+
+metadata:
+
+  name: minimal-ingress
+
+  annotations:
+
+    nginx.ingress.kubernetes.io/rewrite-target: /
+
+spec:
+
+  ingressClassName: nginx
+
+  rules:
+
+  - http:
+
+      paths:
+
+      - path: /service1
+
+        pathType: Prefix
+
+        backend:
+
+          service:
+
+            name: service1
+
+            port:
+
+              number: 80
+      - path: /service2
+
+        pathType: Prefix
+        backend:
+
+            service:
+
+              name: service2
+
+              port:
+
+                number: 80
+
