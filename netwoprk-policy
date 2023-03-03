@@ -1,0 +1,76 @@
+###frontend to backend traffic. 
+root@k8smaster:~# cat frontend-network-policy.yml
+apiVersion: networking.k8s.io/v1
+
+kind: NetworkPolicy
+
+metadata:
+
+  name: frontend-network-policy
+
+  namespace: default
+
+spec:
+
+  podSelector:
+
+    matchLabels:
+
+            run: frontend
+
+  policyTypes:
+
+
+    - Egress
+
+
+  egress:
+
+    - to:
+
+        - podSelector:
+
+                matchLabels:
+                        role: backend
+
+
+
+####backend to frontend traffic ingress
+root@k8smaster:~# cat backend-network-policy.yaml
+apiVersion: networking.k8s.io/v1
+
+kind: NetworkPolicy
+
+metadata:
+
+  name: backend-network-policy
+
+  namespace: default
+
+spec:
+
+  podSelector:
+
+    matchLabels:
+
+            run: backend
+
+  policyTypes:
+
+
+    - Ingress
+
+
+  ingress:
+
+    - from:
+
+        - podSelector:
+
+                matchLabels:
+                        role: frontend
+
+
+###verify the same
+765  kubectl get pod -o wide
+ 767  kubectl exec frontend -- curl 192.168.145.205
