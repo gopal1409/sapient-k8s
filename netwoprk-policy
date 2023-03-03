@@ -1,3 +1,11 @@
+
+##create the pod
+ 719  kubectl run frontend --image=nginx
+  720  kubectl run backend --image=nginx
+###policy if you dont apply
+ 737  kubectl get pod -o wide
+  746  kubectl exec frontend -- curl 192.168.145.205
+
 ###frontend to backend traffic. 
 root@k8smaster:~# cat frontend-network-policy.yml
 apiVersion: networking.k8s.io/v1
