@@ -1,0 +1,9 @@
+deploy ingress
+ 625  kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.6.4/deploy/static/provider/cloud/deploy.yaml
+  626  kubectl get pods --namespace=ingress-nginx
+  627  kubectl wait --namespace ingress-nginx   --for=condition=ready pod   --selector=app.kubernetes.io/component=controller   --timeout=120s
+  ####deploy two pod and create service against the pod
+   643  kubectl run pod1 --image=nginx
+  644  kubectl run pod2 --image=httpd
+  645  kubectl expose pod pod1 --port 80 --name service1
+  646  kubectl expose pod pod2 --port 80 --name service2
