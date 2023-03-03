@@ -10,7 +10,7 @@ deploy ingress
   ###delete the webhook
    665  kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
    ###create ingress.yml
-   apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1
 
 kind: Ingress
 
