@@ -82,3 +82,17 @@ spec:
 ###verify the same
 765  kubectl get pod -o wide
  767  kubectl exec frontend -- curl 192.168.145.205
+ 
+ ####important create default deny policy
+ root@k8smaster:~# cat default-deny.yml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny
+  namespace: default
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+
